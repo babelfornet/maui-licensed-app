@@ -4,7 +4,10 @@ A cross-platform MAUI application with built-in licensing functionality for Andr
 
 ## Overview
 
-This application is built using .NET MAUI (Multi-platform App UI) framework, allowing it to run on multiple platforms from a single codebase. The app includes a licensing system that helps manage software licensing across different platforms.
+This application is built using .NET MAUI (Multi-platform App UI) framework, allowing it to run on multiple platforms from a single codebase. The app includes licensing code that helps manage software licensing across different platforms.
+
+Project documentation is available at:
+- [License Activation in MAUI](https://babelnet.gitbook.io/babel-licensing/examples/licensing-examples/license-activation-in-maui)
 
 ## Features
 
