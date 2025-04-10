@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiLicApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+
+            <Label
+                Text="Babel Licensing MAUI Sample"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="Simplify license activation with Babel Licensing"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Babel Licensing implementation for cross-platform license protection" />
+
+            <Button
+                x:Name="ActivateBtn"
+                Text="Activate License" 
+                SemanticProperties.Hint="Activate License"
+                Clicked="OnActivateClicked"
+                HorizontalOptions="Fill" />
+
+            <Button 
+                x:Name="DeactivateBtn"
+                Text="Deactivate License" 
+                SemanticProperties.Hint="Deactivate License"
+                Clicked="OnDeactivateClicked"
+                HorizontalOptions="Fill" />
+
+            <Button 
+                x:Name="CrashBtn"
+                Text="Generate Exception Report" 
+                SemanticProperties.Hint="Generate Exception Report"
+                Clicked="OnCrashClicked"
+                IsVisible="false"
+                BackgroundColor="Red"
+                TextColor="White"
+                HorizontalOptions="Fill" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
