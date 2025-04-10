@@ -72,3 +72,36 @@ The application includes a custom licensing system that:
 - Handles license activation and deactivation
 - Uses platform-specific implementations to gather system information for licensing
 - Generates an exception report for simulated unhandled exceptions
+
+### Extract Public Key From SNK File
+
+To verify license signatures securely, Babel Licensing can be configured to use a public key extracted directly from an SNK file. The SNK file contains a key pair used to sign and validate licenses. Follow these steps to extract and use the public key:
+
+1. **Create an RSA Signature from the SNK File**  
+   Use the following code to initialize an RSA signature from the SNK file:
+    ```csharp
+    // Create RSA Signature from SNK file
+    RSASignature rsa = RSASignature.CreateFromKeyFile("Keys.snk");
+    ```
+
+2. **Extract the Public Key**  
+   Retrieve the public key from the RSA signature:
+    ```csharp
+    // Export the public key used for license validation
+    var publicKey = rsa.ExportKeys(true);
+    ```
+
+3. **Configure Babel Licensing**  
+   Use the extracted public key in your Babel Licensing configuration for license signature verification:
+    ```csharp
+    // Configure Babel Licensing with the extracted public key
+    var config = new BabelLicensingConfiguration {
+        ClientId = AppInfo.Current.Name,
+        MachineId = new HardwareId(HardwareComponents.SystemUuid | HardwareComponents.SystemName).ToMachineKey(),
+
+        // Create RSA sigature from the publicKey string
+        SignatureProvider = RSASignature.FromKeys("MIGfMA...xuDQIDAQAB")
+    };
+    ```
+
+By extracting the public key directly from your SNK file, you ensure that the licensing system securely validates signed licenses without exposing the complete key pair used for signing.
